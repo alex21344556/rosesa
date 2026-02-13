@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>¿Qué pasó?</title>
+
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(to bottom, #1632cf, #34495e);
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgba(148, 22, 22, 0.623);
+    font-size: 50px;
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif ;
+}
+
+.mensaje {
+    position: absolute;
+    z-index: 1;
+}
+
+.emoji {
+    position: absolute;
+    top: -50px;
+    font-size: 30px;
+    animation: caer linear infinite;
+}
+
+@keyframes caer {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(110vh); }
+}
+</style>
+</head>
+
+<body>
+
+<div class="mensaje">
+    ¿se murió o me abandonó?
+</div>
+
+<script>
+function crearEmoji() {
+    const emoji = document.createElement("div");
+    emoji.classList.add("emoji");
+    emoji.innerText = "🥀";
+    emoji.style.left = Math.random() * 100 + "vw";
+    emoji.style.animationDuration = (Math.random() * 3 + 2) + "s";
+    document.body.appendChild(emoji);
+
+    setTimeout(() => {
+        emoji.remove();
+    }, 5000);
+}
+
+setInterval(crearEmoji, 300);
+</script>
+
+<audio id="musica" loop>
+  <source src="gigi.mp4" type="audio/mpeg">
+</audio>
+
+<script>
+document.addEventListener("click", function() {
+  document.getElementById("musica").play();
+}, { once: true });
+</script>
+
+</body>
+</html>
